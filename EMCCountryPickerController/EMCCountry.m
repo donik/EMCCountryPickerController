@@ -9,7 +9,7 @@
 #import "EMCCountry.h"
 #import "EMCCountryManager.h"
 
-static NSString * const kDefaultLocale = @"en";
+static NSString * const kDefaultLocale = @"ru";
 
 @implementation EMCCountry
 
@@ -57,14 +57,24 @@ static NSString * const kDefaultLocale = @"en";
     return [[self countryCode] isEqualToString:[aCountry countryCode]];
 }
 
-- (NSString *)countryName
+- (NSString *)name
 {
     return [self countryNameWithLocaleIdentifier:[[NSLocale preferredLanguages] objectAtIndex:0]];
+}
+    
+- (NSString *)dialingCode
+{
+    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"code == %@", _countryCode];
+    NSString *countriesPath = [bundle pathForResource:@"EMCCountryPickerController.bundle/CallingCodes" ofType:@"plist"];
+    NSArray *countriesArray = [NSArray arrayWithContentsOfFile:countriesPath];
+    NSDictionary *filteredCountry = [countriesArray filteredArrayUsingPredicate:predicate].firstObject;
+    
+    return filteredCountry.count ? filteredCountry[@"dial_code"] : @"";
 }
 
 - (NSString *)countryNameWithLocale:(NSLocale *)locale
 {
-    
     NSString *localisedCountryName = [locale
                                      displayNameForKey:NSLocaleCountryCode value:self.countryCode];
 
