@@ -224,7 +224,7 @@ static const CGFloat kEMCCountryCellControllerMinCellHeight = 25;
     }
     else
     {
-        cell.textLabel.text = [currentCountry countryName];
+        cell.textLabel.text = [currentCountry name];
     }
     
     // Resize flag
