@@ -9,12 +9,12 @@ Pod::Spec.new do |s|
                    codes are used internally by the controller implementation.  Public domain
                    flags are available for every country.
                    DESC
-  s.homepage     = "https://github.com/emcrisostomo/EMCCountryPickerController"
+  s.homepage     = "https://github.com/donik/EMCCountryPickerController"
   s.license      = { :type => "BSD", :file => "LICENSE" }
   s.author             = { "Enrico M. Crisostomo" => "http://thegreyblog.blogspot.com/" }
   s.social_media_url   = "http://thegreyblog.blogspot.com"
   s.platform     = :ios, "8.0"
-  s.source       = { :git => "https://github.com/emcrisostomo/EMCCountryPickerController.git", :tag => "1.4.0" }
+  s.source       = { :git => "https://github.com/donik/EMCCountryPickerController.git", :tag => "1.4.0" }
   s.source_files  = "EMCCountryPickerController", "EMCCountryPickerController/**/*.{h,m}"
   s.exclude_files = "EMCCountryPickerController/Exclude"
   s.resources = "EMCCountryPickerController/EMCCountryPickerController.bundle"
