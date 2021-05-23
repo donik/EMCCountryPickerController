@@ -278,7 +278,7 @@ static const CGFloat kEMCCountryCellControllerMinCellHeight = 25;
     }
 
     if (!self.countryNameDisplayLocale) {
-        resultPredicate = [NSPredicate predicateWithFormat:@"SELF.countryName contains[cd] %@", searchString];
+        resultPredicate = [NSPredicate predicateWithFormat:@"SELF.name contains[cd] %@", searchString];
     } else {
         resultPredicate = [NSPredicate predicateWithBlock:^BOOL(EMCCountry * _Nullable country, NSDictionary<NSString *,id> * _Nullable bindings) {
             return [[country countryNameWithLocale:self.countryNameDisplayLocale] containsString:searchString];
@@ -330,7 +330,7 @@ static const CGFloat kEMCCountryCellControllerMinCellHeight = 25;
         availableCountries = [[EMCCountryManager countryManager] allCountries];
     }
     
-    NSSortDescriptor *nameDescriptor = [[NSSortDescriptor alloc] initWithKey:@"countryName" ascending:YES];
+    NSSortDescriptor *nameDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
     NSArray *descriptors = [NSArray arrayWithObjects:nameDescriptor, nil];
     _countries = [availableCountries sortedArrayUsingDescriptors:descriptors];
     _countrySearchResults = _countries;
